@@ -1,0 +1,10 @@
+{
+  "db": {
+    "host": "0.0.0.0",
+    "username": "root",
+    "password": "password",
+    "database": "items",
+    "port": 3306,
+    "type": "mysql+pymysql"
+  }
+}

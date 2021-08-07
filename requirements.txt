@@ -1,0 +1,5 @@
+sqlalchemy
+pymysql
+cryptography
+# dev
+pytest

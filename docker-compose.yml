@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  db:
+      image: mysql
+      restart: always
+      environment:
+          MYSQL_DATABASE: 'items'
+          MYSQL_USER: 'user'
+          MYSQL_PASSWORD: 'password'
+          MYSQL_ROOT_PASSWORD: 'password'
+      volumes:
+       - db_data:/var/lib/mysql
+       - ./sql:/docker-entrypoint-initdb.d
+      ports:
+       - '3306:3306'
+      security_opt:
+       - seccomp:unconfined
+volumes:
+  db_data:
