@@ -1,7 +1,7 @@
 import pytest
 from sqlalchemy.orm import scoped_session, sessionmaker
 
-from app.db.db_engine import build_url
+from app.db.db_engine import engine
 
 from sqlalchemy import create_engine
 
@@ -10,11 +10,10 @@ from app.app import app
 @pytest.fixture(scope='session')
 def db_engine(request):
     """yields a SQLAlchemy engine which is suppressed after the test session"""
-    engine_ = create_engine(build_url())
 
-    yield engine_
+    yield engine
 
-    engine_.dispose()
+    engine.dispose()
 
 
 @pytest.fixture(scope='session')
