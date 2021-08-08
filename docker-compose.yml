@@ -4,6 +4,7 @@ services:
   db:
       image: mysql
       restart: always
+      command: --max_allowed_packet=67108864
       environment:
           MYSQL_DATABASE: 'items'
           MYSQL_USER: 'user'
