@@ -1,6 +1,6 @@
-from db.db_engine import engine
-from db.metadata import metadata
-from service.items import create_item
+from app.db.db_engine import engine
+from app.db.metadata import metadata
+from app.service.items import create_item
 
 
 def setup_app():

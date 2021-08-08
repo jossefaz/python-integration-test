@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
-from db.db_engine import engine
-from db.metadata import Items
-from db.items import insert
+from app.db.db_engine import engine
+from app.db.metadata import Items
+from app.db.items import insert
 
 
 def create_item(name: str):

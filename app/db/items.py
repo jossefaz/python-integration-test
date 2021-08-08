@@ -1,4 +1,4 @@
-from db.metadata import Items
+from app.db.metadata import Items
 
 
 def insert(name, session):
