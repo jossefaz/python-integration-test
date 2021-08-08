@@ -1,5 +1,6 @@
 from db.db_engine import engine
 from db.metadata import metadata
+from service.items import create_item
 
 
 def setup_app():
@@ -16,3 +17,4 @@ app = setup_app()
 
 if __name__ == '__main__':
     setup_app()
+    create_item("John Doe")
