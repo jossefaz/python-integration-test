@@ -32,6 +32,7 @@ def db_session(db_session_factory):
 
     try:
         session_.rollback()
+        session_.close()
     except Exception:
         pass
 
