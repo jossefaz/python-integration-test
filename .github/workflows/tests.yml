@@ -8,13 +8,13 @@ jobs:
     name: Tests
     runs-on: ubuntu-18.04
     steps:
+      - uses: actions/checkout@v2
       - name: Run MySQL Instance 
         run: docker-compose up -d --build
       - name: Sleep for 10 seconds
         uses: jakejarvis/wait-action@master
         with:
           time: '10s'
-      - uses: actions/checkout@v2
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
         with:
