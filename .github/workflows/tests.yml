@@ -9,8 +9,6 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
-      - name: Run MySQL Instance - run docker-compose
-        run: docker-compose up -d --build
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
         with:

@@ -1,4 +1,4 @@
-from app.db.db_engine import engine
+from app.db.db_engine import get_engine
 from app.db.metadata import metadata
 from app.service.items import create_item
 
@@ -9,7 +9,7 @@ def setup_app():
     app = FastAPI() or app = Flask()
     and those
     """
-    metadata.create_all(engine)
+    metadata.create_all(get_engine())
     return "A good application constructor"
 
 

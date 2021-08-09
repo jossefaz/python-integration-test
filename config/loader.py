@@ -1,21 +1,13 @@
-import os
-import threading
 import json
 
 
 class SingletonMeta(type):
-    def __init__(cls, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        cls._instance = None
-        cls._locker = threading.Lock()
+    _instances = {}
 
-    @property
-    def instance(self, *args, **kwargs):
-        if self._instance is None:
-            with self._locker:
-                if self._instance is None:
-                    self._instance = self(*args, **kwargs)
-        return self._instance
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super(SingletonMeta, cls).__call__(*args, **kwargs)
+        return cls._instances[cls]
 
 
 class Configuration(metaclass=SingletonMeta):
@@ -24,9 +16,7 @@ class Configuration(metaclass=SingletonMeta):
         self.config = self.load()
 
     def load(self):
-        print(os.getcwd())
         with open("config/config.json") as f:
-            # if EMG_SET env variable is set, update the configuration
             config = json.load(f)
         return config
 

@@ -10,4 +10,5 @@ def build_url():
     return 'mysql+pymysql://%(username)s:%(password)s@%(host)s:%(port)s/%(database)s' % db_config
 
 
-engine = create_engine(build_url())
+def get_engine():
+    return create_engine(build_url())
