@@ -1,3 +1,5 @@
+import time
+
 import pytest
 from sqlalchemy.orm import scoped_session, sessionmaker
 
@@ -5,7 +7,9 @@ from app.db.db_engine import build_url
 
 from sqlalchemy import create_engine
 
-from app.app import app
+from config.loader import Configuration
+from testcontainers.mysql import MySqlContainer
+
 
 @pytest.fixture(scope='session')
 def db_engine(request):
@@ -35,7 +39,10 @@ def db_session(db_session_factory):
     except Exception:
         pass
 
+@pytest.fixture(scope='session', autouse=True)
+def mysql_instance():
+    db_config = Configuration().get("db")
+    with MySqlContainer(MYSQL_DATABASE=db_config.get('database')) as mysql:
+        yield mysql
 
-@pytest.fixture
-def client():
-    return app
+

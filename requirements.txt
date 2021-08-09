@@ -3,3 +3,5 @@ pymysql
 cryptography
 # dev
 pytest
+testcontainers
+six
